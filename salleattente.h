@@ -5,6 +5,7 @@
 class SalleAttente : public QThread
 {
 private:
+	QMutex mutex;
 	QQueue<ACoiffer*> aCoiffer;
 	QQueue<ATatouer*> aTatouer;
 	int nbSieges;

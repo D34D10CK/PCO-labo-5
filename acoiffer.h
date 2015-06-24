@@ -9,7 +9,7 @@ private:
 	int tempsDePousseDesCheveux;
 
 public:
-    ACoiffer(int, SalleAttente*);
+    ACoiffer(SalleAttente*);
     ~ACoiffer();
     void run();
 };
