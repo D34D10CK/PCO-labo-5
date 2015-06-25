@@ -1,11 +1,14 @@
 #ifndef BARBIER_H
 #define BARBIER_H
 
+#include <QQueue>
+#include "client.h"
+
 class Barbier
 {
 private:
-	QQeue<Client> aCoiffer;
-	QQeue<Client> aTatouer;
+    QQueue<Client*> aCoiffer;
+    QQueue<Client*> aTatouer;
 	
 public:
 	Barbier();

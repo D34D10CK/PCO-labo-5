@@ -1,4 +1,8 @@
 #include "salleattente.h"
+#include "client.h"
+#include "acoiffer.h"
+#include "atatouer.h"
+#include <iostream>
 
 SalleAttente::SalleAttente(int taille): nbSieges(taille) {}
 
@@ -16,7 +20,7 @@ void SalleAttente::prendrePlace(ACoiffer* client)
 	}
 	else
 	{
-		vaFaireUnTour.wait(&mutex1, (1000 * client->getTempsPousse()) / 2)
+        vaFaireUnTour.wait(&mutex1, (1000 * client->getTempsPousse()) / 2);
 		std::cout << "le client " << client->getId() << " va faire un tour." << std::endl;
 		mutex1.unlock();
 		prendrePlace(client);
@@ -26,7 +30,7 @@ void SalleAttente::prendrePlace(ACoiffer* client)
 void SalleAttente::attendreBarbier(Client* client)
 {
 	mutex2.lock();
-	attendreBarbier.wait(&mutex2);
+    attendreBarbierCondition.wait(&mutex2);
 	mutex2.unlock();
 }
 

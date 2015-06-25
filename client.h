@@ -1,14 +1,18 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include "salleattente.h"
+class SalleAttente;
+
 #include <QThread>
 
 class Client : public QThread
 {
 private:
-	SalleAttente* salle;
     int id;
+    static int globalId;
+
+protected:
+    SalleAttente* salle;
 
 public:
 	Client(SalleAttente*);

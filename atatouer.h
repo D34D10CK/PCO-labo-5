@@ -1,6 +1,8 @@
 #ifndef ATATOUER_H
 #define ATATOUER_H
 
+class SalleAttente;
+
 #include "salleattente.h"
 #include "client.h"
 

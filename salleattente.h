@@ -1,14 +1,14 @@
 #ifndef SALLEATTENTE_H
 #define SALLEATTENTE_H
 
-#include "client.h"
+class ACoiffer;
+class ATatouer;
+class Client;
+
 #include <QMutex>
 #include <QThread>
 #include <QWaitCondition>
-#include "acoiffer.h"
-#include "atatouer.h"
-
-class ACoiffer;
+#include <QQueue>
 
 class SalleAttente : public QThread
 {
@@ -16,14 +16,14 @@ private:
 	QMutex mutex1;
 	QMutex mutex2;
 	QWaitCondition vaFaireUnTour;
-	QWaitCondition attendreBarbier;
+    QWaitCondition attendreBarbierCondition;
 	QQueue<ACoiffer*> aCoiffer;
 	QQueue<ATatouer*> aTatouer;
 	int nbSieges;
 	int placesOccupees;
 
 public:
-	SalleAttente();
+    SalleAttente(int taille);
 	~SalleAttente();
 	void prendrePlace(ACoiffer*);
 	void prendrePlace(ATatouer*);

@@ -1,5 +1,7 @@
 #include "client.h"
 
+int Client::globalId = 0;
+
 Client::Client(SalleAttente* salle): salle(salle)
 {
 	id = globalId++;
@@ -11,5 +13,3 @@ int Client::getId()
 {
 	return id;
 }
-
-static int Client::globalId = 0;

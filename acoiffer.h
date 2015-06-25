@@ -1,12 +1,12 @@
 #ifndef ACOIFFER_H
 #define ACOIFFER_H
 
+class SalleAttente;
+
 #include "client.h"
 #include "salleattente.h"
 
-class SalleAttente;
-
-class ACoiffer
+class ACoiffer : public Client
 {
 private:
 	int tempsDePousseDesCheveux;
