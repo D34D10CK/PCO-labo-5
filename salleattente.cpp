@@ -4,24 +4,35 @@ SalleAttente::SalleAttente(int taille): nbSieges(taille) {}
 
 SalleAttente::~SalleAttente() {}
 
-void prendrePlace(ACoiffer* client)
+void SalleAttente::prendrePlace(ACoiffer* client)
 {
-	mutex.lock();
+	mutex1.lock();
 	if (placesOccupees < nbSieges)
 	{
 		aCoiffer.enqueue(client);
 		placesOccupees++;
+		std::cout << "le client " << client->getId() << " entre dans la salle d'attente." << std::endl;
+		mutex1.unlock();
 	}
 	else
 	{
-
+		vaFaireUnTour.wait(&mutex1, (1000 * client->getTempsPousse()) / 2)
+		std::cout << "le client " << client->getId() << " va faire un tour." << std::endl;
+		mutex1.unlock();
+		prendrePlace(client);
 	}
-	mutex.unlock();
 }
 
-void prendrePlace(ATatouer* client)
+void SalleAttente::attendreBarbier(Client* client)
 {
-	mutex.lock();
+	mutex2.lock();
+	attendreBarbier.wait(&mutex2);
+	mutex2.unlock();
+}
+
+void SalleAttente::prendrePlace(ATatouer* client)
+{
+	mutex1.lock();
 	if (placesOccupees < nbSieges)
 	{
 		aTatouer.enqueue(client);
@@ -31,5 +42,5 @@ void prendrePlace(ATatouer* client)
 	{
 
 	}
-	mutex.unlock();
+	mutex1.unlock();
 }

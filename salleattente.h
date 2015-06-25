@@ -5,7 +5,10 @@
 class SalleAttente : public QThread
 {
 private:
-	QMutex mutex;
+	QMutex mutex1;
+	QMutex mutex2;
+	QWaitCondition vaFaireUnTour;
+	QWaitCondition attendreBarbier;
 	QQueue<ACoiffer*> aCoiffer;
 	QQueue<ATatouer*> aTatouer;
 	int nbSieges;
@@ -16,6 +19,7 @@ public:
 	~SalleAttente();
 	void prendrePlace(ACoiffer*);
 	void prendrePlace(ATatouer*);
+	void attendreBarbier(Client*);
 };
 
 #endif // SALLEATTENTE_H

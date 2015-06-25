@@ -13,6 +13,12 @@ void ACoiffer::run()
 	{
 		sleep(tempsDePousseDesCheveux);
 		salle.prendrePlace(this);
+		salle.attendreBarbier(this);
 	}
+}
+
+int ACoiffer::getTempsPousse()
+{
+	return tempsDePousseDesCheveux;
 }
 

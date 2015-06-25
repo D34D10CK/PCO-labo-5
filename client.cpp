@@ -1,5 +1,15 @@
 #include "client.h"
 
-Client::Client(int priority, SalleAttente* salle): salle(salle) {}
+Client::Client(SalleAttente* salle): salle(salle)
+{
+	id = globalId++;
+}
 
 Client::~Client() {}
+
+int Client::getId()
+{
+	return id;
+}
+
+static int Client::globalId = 0;

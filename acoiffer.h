@@ -12,6 +12,7 @@ public:
     ACoiffer(SalleAttente*);
     ~ACoiffer();
     void run();
+    int getTempsPousse();
 };
 
 #endif // ACOIFFER_H
