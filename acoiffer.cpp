@@ -1,6 +1,7 @@
 #include "acoiffer.h"
+#include "atatouer.h"
 
-ACoiffer::ACoiffer(SalleAttente* salle) : Client(salle)
+ACoiffer::ACoiffer(SalleAttente* salle)
 {
 	tempsDePousseDesCheveux = rand() % 5 + 2;
 }

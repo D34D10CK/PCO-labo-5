@@ -2,14 +2,17 @@
 #define ACOIFFER_H
 
 #include "client.h"
+#include "salleattente.h"
 
-class ACoiffer : Client
+class SalleAttente;
+
+class ACoiffer
 {
 private:
 	int tempsDePousseDesCheveux;
 
 public:
-    ACoiffer(SalleAttente*);
+    ACoiffer(SalleAttente* salle);
     ~ACoiffer();
     void run();
     int getTempsPousse();

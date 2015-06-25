@@ -1,6 +1,14 @@
 #ifndef SALLEATTENTE_H
 #define SALLEATTENTE_H
+
 #include "client.h"
+#include <QMutex>
+#include <QThread>
+#include <QWaitCondition>
+#include "acoiffer.h"
+#include "atatouer.h"
+
+class ACoiffer;
 
 class SalleAttente : public QThread
 {

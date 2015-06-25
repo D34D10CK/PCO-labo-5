@@ -1,6 +1,6 @@
 #include <QCoreApplication>
 #include <iostream>
-#include <limits.h>
+#include <limits>
 
 int main(int argc, char *argv[])
 {

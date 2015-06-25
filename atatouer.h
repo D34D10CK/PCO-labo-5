@@ -1,10 +1,13 @@
 #ifndef ATATOUER_H
 #define ATATOUER_H
 
-class ATatouer
+#include "salleattente.h"
+#include "client.h"
+
+class ATatouer : public Client
 {
 public:
-	ATatouer(SalleAttente*);
+    ATatouer(SalleAttente* salle);
 	~ATatouer();
 	void run();
 };
