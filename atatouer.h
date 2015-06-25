@@ -8,6 +8,9 @@ class SalleAttente;
 
 class ATatouer : public Client
 {
+private:
+	int tempsAvantTatouage;
+	
 public:
     ATatouer(SalleAttente* salle);
 	~ATatouer();
