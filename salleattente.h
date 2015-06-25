@@ -31,7 +31,7 @@ private:
 
 public:
     SalleAttente(int taille);
-	~SalleAttente();
+    ~SalleAttente();
 	void prendrePlace(ACoiffer*);
 	void prendrePlace(ATatouer*);
     void attendreBarbier(Client*);

@@ -2,7 +2,7 @@
 
 ATatouer::ATatouer(SalleAttente* salle) : Client(salle)
 {
-	tempsAvantTatouage = rand() % 3 * + 1
+    tempsAvantTatouage = rand() % 3 * + 1;
 }
 
 ATatouer::~ATatouer() {}
