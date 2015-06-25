@@ -1,6 +1,6 @@
 #include "barbier.h"
 
-Barbier::Barbier()
+Barbier::Barbier(SalleAttente* salle) : salle(salle)
 {
 
 }
@@ -10,3 +10,8 @@ Barbier::~Barbier()
 
 }
 
+void Barbier::run() {
+    forever {
+        salle->traiterClient();
+    }
+}

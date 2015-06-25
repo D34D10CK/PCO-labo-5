@@ -16,7 +16,9 @@ void SalleAttente::prendrePlace(ACoiffer* client)
 		aCoiffer.enqueue(client);
 		placesOccupees++;
 		std::cout << "le client " << client->getId() << " entre dans la salle d'attente." << std::endl;
-		mutex1.unlock();
+        mutex1.unlock();
+
+        salleVide.wakeOne();
 	}
 	else
 	{
@@ -41,10 +43,33 @@ void SalleAttente::prendrePlace(ATatouer* client)
 	{
 		aTatouer.enqueue(client);
 		placesOccupees++;
+
+        salleVide.wakeOne();
 	}
 	else
 	{
 
 	}
 	mutex1.unlock();
+}
+
+void SalleAttente::traiterClient() {
+    if (aTatouer.length() > 0) {
+        // on traite le client à tatouer
+        mutex1.lock();
+
+
+        aTatouer.pop_front();
+
+        placesOccupees--;
+
+        mutex1.unlock();
+    } else if (aCoiffer.length() > 0) {
+        // on traite le client à coiffer
+    } else {
+        // le barbier peut dormir
+        salleVideMutex.lock();
+        salleVide.wait(&salleVideMutex);
+        salleVideMutex.unlock();
+    }
 }
