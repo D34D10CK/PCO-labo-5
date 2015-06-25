@@ -11,7 +11,8 @@ Barbier::~Barbier()
 }
 
 void Barbier::run() {
-    forever {
+    forever
+    {
         salle->traiterClient();
     }
 }

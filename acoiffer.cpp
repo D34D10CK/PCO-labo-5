@@ -10,7 +10,7 @@ ACoiffer::~ACoiffer() {}
 
 void ACoiffer::run()
 {
-	while (1)
+    forever
 	{
 		sleep(tempsDePousseDesCheveux);
         salle->prendrePlace(this);

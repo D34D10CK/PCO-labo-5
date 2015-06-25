@@ -24,6 +24,8 @@ private:
 	QQueue<ACoiffer*> aCoiffer;
 	QQueue<ATatouer*> aTatouer;
 
+    Client* next;
+
     int nbSieges;
 	int placesOccupees;
 
@@ -32,7 +34,7 @@ public:
 	~SalleAttente();
 	void prendrePlace(ACoiffer*);
 	void prendrePlace(ATatouer*);
-	void attendreBarbier(Client*);
+    void attendreBarbier(Client*);
     void traiterClient();
 };
 
