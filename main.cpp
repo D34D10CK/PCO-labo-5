@@ -36,12 +36,14 @@ int main(int argc, char *argv[])
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
-	while (tailleSalleAttente < 1);
+    while (tailleSalleAttente < 1);
 
 	std::vector<Client*> clients;
 	SalleAttente salle(tailleSalleAttente);
-	Barbier barbier(&salle);
-	barbier.start();
+
+    Barbier barbier(&salle);
+    barbier.start();
+
 	for (int i = 0; i < nbACoiffer; i++)
 	{
 		clients.push_back(new ACoiffer(&salle));
@@ -53,7 +55,7 @@ int main(int argc, char *argv[])
 	for (Client* c : clients)
 	{
         c->start();
-	}
+    }
 
 	return a.exec();
 }

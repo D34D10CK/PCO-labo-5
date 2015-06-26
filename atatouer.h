@@ -15,6 +15,7 @@ public:
     ATatouer(SalleAttente* salle);
 	~ATatouer();
 	void run();
+    int getTempsTatouage();
 };
 
 #endif // ATATOUER_H

@@ -13,13 +13,16 @@ class Client;
 class SalleAttente : public QThread
 {
 private:
-	QMutex mutex1;
-	QMutex mutex2;
+    QMutex arriveeSalleMutex;
+    QMutex traitementEnCours;
+    QMutex attendreBarbierMutex;
     QMutex salleVideMutex;
+    QMutex isFreeMutex;
 
     QWaitCondition vaFaireUnTour;
     QWaitCondition attendreBarbierCondition;
     QWaitCondition salleVide;
+    QWaitCondition enCoursDeTraitement;
 
 	QQueue<ACoiffer*> aCoiffer;
 	QQueue<ATatouer*> aTatouer;
@@ -27,7 +30,9 @@ private:
     Client* next;
 
     int nbSieges;
-	int placesOccupees;
+    int placesOccupees = 0;
+
+    bool isFree = true;
 
 public:
     SalleAttente(int taille);

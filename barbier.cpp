@@ -11,6 +11,8 @@ Barbier::~Barbier()
 }
 
 void Barbier::run() {
+    std::cout << "Barbier is running." << std::endl;
+
     forever
     {
         salle->traiterClient();

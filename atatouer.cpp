@@ -7,11 +7,18 @@ ATatouer::ATatouer(SalleAttente* salle) : Client(salle)
 
 ATatouer::~ATatouer() {}
 
+int ATatouer::getTempsTatouage() {
+    return tempsAvantTatouage;
+}
+
 void ATatouer::run()
 {
-	while (1)
+    std::cout << "ATatouer #" << this->getId() << " is running." << std::endl;
+
+    forever
 	{
 		sleep(tempsAvantTatouage);
+        std::cout << "Le client #" << this->getId() << " veut un tatouage tribal de berger!" << std::endl;
 		salle->prendrePlace(this);
 		salle->attendreBarbier(this);
 	}
